@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>millo — Summer</title>
+  <meta property="og:title" content="millo — Summer" />
+  <meta property="og:description" content="Out now on all platforms." />
+  <meta property="og:image" content="https://pub-b7ecc820d796436483e1c00669eb3c16.r2.dev/Screenshot%202026-06-22%20at%2010.19.10%E2%80%AFAM.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- GOOGLE ANALYTICS GA4 — Replace G-XXXXXXXXXX -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+
+  <!-- META PIXEL — Replace YOUR_PIXEL_ID -->
+  <script>
+    !function(f,b,e,v,n,t,s){
+      if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window,document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'YOUR_PIXEL_ID');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #f0f9ff;
+      --surface:   #ffffff;
+      --border:    #c8e6ff;
+      --border2:   #7fd0ff;
+      --muted:     #72b8e8;
+      --text:      #0a2a40;
+      --text2:     #1a5a80;
+      --blue:      #01B0FF;
+      --blue2:     #33c3ff;
+      --blue-pale: #e6f6ff;
+    }
+
+    html, body {
+      min-height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'IBM Plex Mono', 'Courier New', monospace;
+      font-size: 14px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 3rem 1.25rem 5rem;
+      overflow-x: hidden;
+    }
+
+    /* ── BOOT OVERLAY ── */
+    #boot {
+      position: fixed;
+      inset: 0;
+      background: #000;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.6s ease;
+    }
+
+    #boot.fade-out { opacity: 0; pointer-events: none; }
+
+    .boot-inner {
+      width: min(420px, 90vw);
+      padding: 2rem;
+    }
+
+    .boot-line {
+      font-size: 12px;
+      line-height: 1.9;
+      color: #01B0FF;
+      opacity: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      letter-spacing: 0.05em;
+    }
+
+    .boot-line.dim   { color: #1a4a5a; }
+    .boot-line.ok    { color: #33ffaa; }
+    .boot-line.white { color: #c8e6ff; }
+    .boot-line.show  { opacity: 1; }
+
+    .boot-cursor {
+      display: inline-block;
+      width: 7px;
+      height: 12px;
+      background: #01B0FF;
+      vertical-align: middle;
+      animation: blink 0.8s step-end infinite;
+    }
+
+    /* ── MAIN CONTENT ── */
+    .container {
+      width: 100%;
+      max-width: 440px;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .container.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── ART ── */
+    .art-outer {
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+
+    .art-wrap {
+      width: 100%;
+      aspect-ratio: 1;
+      overflow: hidden;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      position: relative;
+    }
+
+    .art-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transform: scale(1.04);
+      filter: brightness(0.3);
+      transition: transform 1.1s cubic-bezier(0.25,0.46,0.45,0.94),
+                  filter 1.1s ease;
+    }
+
+    .art-wrap img.loaded {
+      transform: scale(1);
+      filter: brightness(1);
+    }
+
+    .art-scan {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(1,176,255,0.18) 50%,
+        transparent 100%
+      );
+      transform: translateY(-100%);
+      transition: none;
+      pointer-events: none;
+      border-radius: 12px;
+    }
+
+    .art-scan.sweep {
+      transition: transform 0.9s ease-in-out;
+      transform: translateY(100%);
+    }
+
+    /* ── VINYL STICKER ── */
+    .sticker-wrap {
+      position: absolute;
+      bottom: -28px;
+      right: -16px;
+      width: 110px;
+      height: 110px;
+      z-index: 10;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.22));
+      animation: stickerPop 0.5s cubic-bezier(0.34,1.56,0.64,1) both;
+      animation-delay: 1.8s;
+      opacity: 0;
+    }
+
+    @keyframes stickerPop {
+      from { opacity: 0; transform: scale(0.5) rotate(-15deg); }
+      to   { opacity: 1; transform: scale(1) rotate(-8deg); }
+    }
+
+    .sticker-wrap svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* ── META ── */
+    .meta {
+      text-align: center;
+      margin-bottom: 1.75rem;
+      margin-top: 1rem;
+    }
+
+    .meta .release-tag {
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      color: var(--blue);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .meta h1 {
+      font-size: 30px;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    .meta .artist {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 5px;
+      letter-spacing: 0.12em;
+    }
+
+    /* ── PROMPT ── */
+    .prompt-line {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      margin-bottom: 1.25rem;
+      padding: 0.6rem 0.9rem;
+      background: var(--blue-pale);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text2);
+    }
+
+    .prompt-line .caret { color: var(--blue); font-weight: 600; }
+    #typed-text { color: var(--text); }
+
+    .cursor {
+      display: inline-block;
+      width: 7px;
+      height: 13px;
+      background: var(--blue);
+      vertical-align: middle;
+      margin-left: 1px;
+      animation: blink 1.1s step-end infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0; }
+    }
+
+    /* ── LINKS ── */
+    .links-label {
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+
+    .link-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      padding: 0.75rem 1rem;
+      margin-bottom: 0.45rem;
+      background: var(--surface);
+      color: var(--text);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 13px;
+      transition: border-color 0.15s, background 0.15s;
+      cursor: pointer;
+      animation: fadeUp 0.4s ease both;
+    }
+
+    .link-item:hover { border-color: var(--blue2); background: var(--blue-pale); }
+    .link-item:active { transform: translateY(1px); }
+
+    .link-icon { flex-shrink: 0; color: var(--blue); }
+    .link-svc {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      text-transform: uppercase;
+      flex: 1;
+    }
+    .link-name { font-size: 13px; font-weight: 500; color: var(--text); }
+    .link-arrow {
+      font-size: 12px;
+      color: var(--border2);
+      transition: transform 0.15s, color 0.15s;
+    }
+    .link-item:hover .link-arrow { transform: translateX(3px); color: var(--blue); }
+
+    .divider { border: none; border-top: 1px solid var(--border); margin: 0.75rem 0; }
+
+    .footer {
+      text-align: center;
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      margin-top: 2rem;
+      line-height: 1.9;
+    }
+    .footer span { color: var(--blue); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .link-item:nth-child(1) { animation-delay: 0.1s; }
+    .link-item:nth-child(2) { animation-delay: 0.22s; }
+    .link-item:nth-child(3) { animation-delay: 0.34s; }
+    .link-item:nth-child(4) { animation-delay: 0.5s; }
+
+    @media (max-width: 500px) {
+      body { padding: 1.5rem 0.75rem 4rem; }
+      .meta h1 { font-size: 24px; }
+      .sticker-wrap { width: 90px; height: 90px; bottom: -22px; right: -10px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- BOOT OVERLAY -->
+<div id="boot">
+  <div class="boot-inner" id="boot-lines"></div>
+</div>
+
+<div class="container" id="main">
+
+  <div class="art-outer">
+    <div class="art-wrap">
+      <img id="art-img"
+        src="https://pub-b7ecc820d796436483e1c00669eb3c16.r2.dev/Screenshot%202026-06-22%20at%2010.19.10%E2%80%AFAM.png"
+        alt="Summer — millo"
+      />
+      <div class="art-scan" id="art-scan"></div>
+    </div>
+
+    <!-- STICKER -->
+    <div class="sticker-wrap">
+      <svg viewBox="0 0 110 110" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <path id="arc" d="M55,55 m-42,0 a42,42 0 1,1 84,0 a42,42 0 1,1 -84,0"/>
+        </defs>
+        <circle cx="55" cy="55" r="52" fill="#01B0FF"/>
+        <circle cx="55" cy="55" r="42" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="0.75"/>
+        <circle cx="55" cy="55" r="34" fill="rgba(255,255,255,0.12)"/>
+
+        <text font-family="'IBM Plex Mono', monospace" font-size="8" font-weight="600" fill="white" letter-spacing="3.5">
+          <textPath href="#arc" startOffset="8%">MILLO · SUMMER · 2026 ·</textPath>
+        </text>
+        <text x="55" y="51" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9" font-weight="600" fill="white" letter-spacing="1">SUMMER</text>
+        <text x="55" y="63" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="7" fill="rgba(255,255,255,0.75)" letter-spacing="2">OUT NOW</text>
+      </svg>
+    </div>
+  </div>
+
+  <div class="meta">
+    <div class="release-tag">&#9656; out now &nbsp;·&nbsp; june 22, 2026</div>
+    <h1>Summer</h1>
+    <div class="artist">millo</div>
+  </div>
+
+  <div class="prompt-line">
+    <span class="caret">$</span>
+    <span id="typed-text"></span><span class="cursor"></span>
+  </div>
+
+  <div class="links-label">// stream &amp; follow</div>
+
+  <a class="link-item" href="https://open.spotify.com/track/2XWSDi1w7lQaEZawG4TVDM?si=4799054e2b4f43ff" target="_blank" rel="noopener" onclick="track('Spotify')">
+    <svg class="link-icon" viewBox="0 0 24 24" fill="none" width="18" height="18">
+      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M7.5 14.5c2.5-1 5-1 7.5 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M7 11.5c3-1.2 5.5-1 8.5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M6.5 8.5c3.5-1.5 7-1 10 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+    <span class="link-svc">Spotify</span>
+    <span class="link-name">Listen on Spotify</span>
+    <span class="link-arrow">→</span>
+  </a>
+
+  <a class="link-item" href="https://music.apple.com/us/album/summer-single/6780217036?uo=4&app=music&at=1001lry3&ct=dashboard" target="_blank" rel="noopener" onclick="track('Apple Music')">
+    <svg class="link-icon" viewBox="0 0 24 24" fill="none" width="18" height="18">
+      <path d="M12 3c4.97 0 9 4.03 9 9s-4.03 9-9 9-9-4.03-9-9 4.03-9 9-9z" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M9.5 16V9l7-1.5V15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="9.5" cy="16" r="1.25" fill="currentColor"/>
+      <circle cx="16.5" cy="15" r="1.25" fill="currentColor"/>
+    </svg>
+    <span class="link-svc">Apple Music</span>
+    <span class="link-name">Listen on Apple Music</span>
+    <span class="link-arrow">→</span>
+  </a>
+
+  <a class="link-item" href="https://youtu.be/BfJhYtu4J_0?si=Ty75zsWbjAKwVJP2" target="_blank" rel="noopener" onclick="track('YouTube')">
+    <svg class="link-icon" viewBox="0 0 24 24" fill="none" width="18" height="18">
+      <rect x="2" y="5" width="20" height="14" rx="4" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M10 9.5l5 2.5-5 2.5V9.5z" fill="currentColor"/>
+    </svg>
+    <span class="link-svc">YouTube</span>
+    <span class="link-name">Watch on YouTube</span>
+    <span class="link-arrow">→</span>
+  </a>
+
+  <hr class="divider" />
+
+  <a class="link-item" href="https://www.instagram.com/millo.band/" target="_blank" rel="noopener" onclick="track('Instagram')">
+    <svg class="link-icon" viewBox="0 0 24 24" fill="none" width="18" height="18">
+      <rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke="currentColor" stroke-width="1.5"/>
+      <circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.5"/>
+      <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+    </svg>
+    <span class="link-svc">Instagram</span>
+    <span class="link-name">Follow @millo.band</span>
+    <span class="link-arrow">→</span>
+  </a>
+
+  <div class="footer">
+    <span>millo</span> &nbsp;·&nbsp; Summer &nbsp;·&nbsp; 2026<br/>
+    all rights reserved<br/>
+    <a href="https://milloband.com/" target="_blank" rel="noopener" style="color:var(--muted);text-decoration:none;letter-spacing:0.1em;font-size:10px;border-bottom:1px solid var(--border);padding-bottom:1px;transition:color 0.15s,border-color 0.15s;" onmouseover="this.style.color='var(--blue)';this.style.borderColor='var(--blue)'" onmouseout="this.style.color='var(--muted)';this.style.borderColor='var(--border)'">milloband.com</a>
+  </div>
+
+</div>
+
+<script>
+  /* ── BOOT SEQUENCE ── */
+  const bootLines = [
+    { text: 'millo-os v2.6.22 booting...', cls: 'dim', delay: 0 },
+    { text: 'loading audio engine......... [OK]', cls: 'ok', delay: 220 },
+    { text: 'mounting /releases/summer', cls: '', delay: 420 },
+    { text: 'checking streaming nodes.... [OK]', cls: 'ok', delay: 620 },
+    { text: 'unpacking Summer.flac', cls: 'white', delay: 820 },
+    { text: '> release date: june 22 2026', cls: '', delay: 1020 },
+    { text: '> artist: millo', cls: '', delay: 1160 },
+    { text: '', cls: '', delay: 1300 },
+    { text: 'initializing player ▋', cls: 'white', delay: 1420 },
+  ];
+
+  const bootEl = document.getElementById('boot-lines');
+  bootLines.forEach(({ text, cls, delay }) => {
+    setTimeout(() => {
+      const line = document.createElement('div');
+      line.className = 'boot-line' + (cls ? ' ' + cls : '');
+      line.textContent = text;
+      bootEl.appendChild(line);
+      requestAnimationFrame(() => line.classList.add('show'));
+    }, delay);
+  });
+
+  setTimeout(() => {
+    const boot = document.getElementById('boot');
+    boot.classList.add('fade-out');
+    setTimeout(() => boot.remove(), 650);
+
+    const main = document.getElementById('main');
+    main.classList.add('visible');
+
+    const img = document.getElementById('art-img');
+    const scan = document.getElementById('art-scan');
+
+    if (img.complete) {
+      revealArt();
+    } else {
+      img.addEventListener('load', revealArt);
+    }
+
+    function revealArt() {
+      setTimeout(() => {
+        img.classList.add('loaded');
+        scan.classList.add('sweep');
+      }, 100);
+    }
+
+    setTimeout(() => {
+      let pi = 0, ci = 0, deleting = false;
+      const phrases = ['play summer --now', 'stream summer.mp3', 'follow --all-platforms'];
+      const el = document.getElementById('typed-text');
+
+      function type() {
+        const phrase = phrases[pi];
+        if (!deleting) {
+          el.textContent = phrase.slice(0, ++ci);
+          if (ci === phrase.length) { deleting = true; setTimeout(type, 2200); return; }
+          setTimeout(type, 65);
+        } else {
+          el.textContent = phrase.slice(0, --ci);
+          if (ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; setTimeout(type, 400); return; }
+          setTimeout(type, 35);
+        }
+      }
+      type();
+    }, 300);
+
+  }, 2100);
+
+  function track(service) {
+    if (typeof gtag !== 'undefined') gtag('event', 'link_click', { service, song: 'Summer' });
+    if (typeof fbq !== 'undefined') fbq('track', 'ViewContent', { content_name: 'Summer', content_type: service });
+  }
+</script>
+
+</body>
+</html>
