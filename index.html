@@ -1,527 +1,316 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>millo — Summer</title>
-  <meta property="og:title" content="millo — Summer" />
-  <meta property="og:description" content="Out now on all platforms." />
-  <meta property="og:image" content="https://pub-b7ecc820d796436483e1c00669eb3c16.r2.dev/Screenshot%202026-06-22%20at%2010.19.10%E2%80%AFAM.png" />
-  <meta name="twitter:card" content="summary_large_image" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>MILLO // SUMMER — OUT NOW</title>
+<meta name="description" content="millo — new single 'Summer' out now. Stream on Spotify." />
+<meta name="theme-color" content="#00AFFE" />
 
-  <!-- GOOGLE ANALYTICS GA4 — Replace G-XXXXXXXXXX -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
-  </script>
+<meta property="og:title" content="MILLO // SUMMER — OUT NOW" />
+<meta property="og:description" content="New single 'Summer' is out now. Stream on Spotify." />
+<meta property="og:type" content="music.song" />
+<meta property="og:image" content="https://pub-b7ecc820d796436483e1c00669eb3c16.r2.dev/Screenshot%202026-06-22%20at%2010.19.10%E2%80%AFAM.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="MILLO // SUMMER — OUT NOW" />
+<meta name="twitter:description" content="New single 'Summer' is out now — stream on Spotify." />
+<meta name="twitter:image" content="https://pub-b7ecc820d796436483e1c00669eb3c16.r2.dev/Screenshot%202026-06-22%20at%2010.19.10%E2%80%AFAM.png" />
 
-  <!-- META PIXEL — Replace YOUR_PIXEL_ID -->
-  <script>
-    !function(f,b,e,v,n,t,s){
-      if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)}(window,document,'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', 'YOUR_PIXEL_ID');
-    fbq('track', 'PageView');
-  </script>
-  <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preconnect" href="https://open.spotify.com" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=IBM+Plex+Mono:wght@400;500;700&display=swap" />
 
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap');
+<!-- ════════════════════════════════════════════════════════════
+     ANALYTICS — replace the two placeholder IDs below:
+       • G-YPHL9R55E3     → your GA4 Measurement ID
+       • 3654528478159998 → your Meta (Facebook) Pixel ID
+     ════════════════════════════════════════════════════════════ -->
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YPHL9R55E3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-YPHL9R55E3');
+</script>
 
-    :root {
-      --bg:        #f0f9ff;
-      --surface:   #ffffff;
-      --border:    #c8e6ff;
-      --border2:   #7fd0ff;
-      --muted:     #72b8e8;
-      --text:      #0a2a40;
-      --text2:     #1a5a80;
-      --blue:      #01B0FF;
-      --blue2:     #33c3ff;
-      --blue-pale: #e6f6ff;
-    }
+<!-- Meta Pixel -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '3654528478159998');
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=3654528478159998&ev=PageView&noscript=1"/></noscript>
 
-    html, body {
-      min-height: 100%;
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'IBM Plex Mono', 'Courier New', monospace;
-      font-size: 14px;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
+<style>
+  :root{
+    --pink:#00AFFE;
+    --pink-hi:#0077CC;
+    --pink-faint:rgba(0,175,254,0.32);
+    --bg:#ffffff;
+    --ink:#0a4a6b;
+    --page-bg:linear-gradient(180deg,#ffffff 0%,#eaf7ff 55%,#dff3ff 100%);
+    --scan:rgba(0,135,199,0.06);
+    --vig:rgba(0,175,254,0.12);
+    --spotify:#1DB954;
+    --mono:'IBM Plex Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+    --pixel:'Press Start 2P',var(--mono);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{ -webkit-text-size-adjust:100%; background:var(--bg); }
+  body{
+    background:var(--page-bg); background-attachment:fixed; color:var(--ink);
+    font-family:var(--mono); font-size:14px; line-height:1.5;
+    -webkit-font-smoothing:antialiased; min-height:100vh; overflow-x:hidden;
+  }
+  a{ color:inherit; text-decoration:none; -webkit-tap-highlight-color:transparent; }
 
-    body {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 3rem 1.25rem 5rem;
-      overflow-x: hidden;
-    }
+  /* pixel-cloud sky */
+  #sky{ position:fixed; inset:0; z-index:0; pointer-events:none;
+    image-rendering:pixelated; image-rendering:crisp-edges; opacity:0.7; }
 
-    /* ── BOOT OVERLAY ── */
-    #boot {
-      position: fixed;
-      inset: 0;
-      background: #000;
-      z-index: 999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: opacity 0.6s ease;
-    }
+  /* CRT overlays */
+  .scanlines{ position:fixed; inset:0; z-index:9000; pointer-events:none;
+    background:repeating-linear-gradient(0deg, transparent 0 2px, var(--scan) 2px 3px); }
+  .vignette{ position:fixed; inset:0; z-index:9001; pointer-events:none;
+    background:radial-gradient(ellipse 95% 85% at 50% 40%, transparent 60%, var(--vig) 100%); }
 
-    #boot.fade-out { opacity: 0; pointer-events: none; }
+  .term{ position:relative; z-index:1; width:100%; max-width:440px; margin:0 auto; min-height:100vh;
+    border-left:1px solid var(--pink-faint); border-right:1px solid var(--pink-faint);
+    padding:0 16px 120px; }
+  @media (max-width:480px){ .term{ border:none; padding:0 14px 120px; } }
 
-    .boot-inner {
-      width: min(420px, 90vw);
-      padding: 2rem;
-    }
+  .titlebar{ display:flex; align-items:center; gap:10px; padding:11px 2px 10px;
+    border-bottom:1px solid var(--pink-faint); font-size:10px; letter-spacing:0.12em; }
+  .tb-dots{ display:flex; gap:5px; }
+  .tb-dots i{ width:9px; height:9px; border:1px solid var(--pink); display:block; }
+  .tb-dots i:nth-child(2){ background:var(--pink); }
+  .tb-name{ opacity:0.85; }
+  .tb-stat{ margin-left:auto; opacity:0.5; font-size:9px; }
+  .tb-stat .on{ color:var(--pink-hi); animation:blink 1.4s step-end infinite; }
+  @keyframes blink{ 0%,100%{opacity:1} 50%{opacity:0} }
 
-    .boot-line {
-      font-size: 12px;
-      line-height: 1.9;
-      color: #01B0FF;
-      opacity: 0;
-      white-space: nowrap;
-      overflow: hidden;
-      letter-spacing: 0.05em;
-    }
+  header{ padding:18px 0 4px; text-align:center; }
+  .logo{ font-family:var(--pixel); font-size:22px; line-height:1; color:var(--pink); }
+  .title{ font-family:var(--pixel); font-size:26px; line-height:1; text-align:center;
+    color:var(--pink); margin:14px 0 4px; }
+  .sub{ text-align:center; font-size:10px; letter-spacing:0.16em; text-transform:uppercase;
+    opacity:0.6; margin-bottom:16px; }
+  .sub .live{ color:var(--pink); }
 
-    .boot-line.dim   { color: #1a4a5a; }
-    .boot-line.ok    { color: #33ffaa; }
-    .boot-line.white { color: #c8e6ff; }
-    .boot-line.show  { opacity: 1; }
+  /* cover art — the hook */
+  .cover{ display:block; position:relative; width:100%; margin:4px 0 18px;
+    border:1px solid var(--pink); overflow:hidden; line-height:0; }
+  .cover img{ width:100%; height:auto; display:block; filter:saturate(1.05) contrast(1.03); transition:filter .25s; }
+  .cover::after{ content:''; position:absolute; inset:0; pointer-events:none;
+    background:repeating-linear-gradient(0deg, rgba(0,0,0,0) 0 2px, rgba(0,0,0,0.10) 2px 3px);
+    mix-blend-mode:multiply; }
+  .cover .tag{ position:absolute; top:8px; right:8px; font-family:var(--pixel); font-size:8px;
+    letter-spacing:0.14em; color:var(--bg); background:var(--pink); padding:5px 7px;
+    animation:blink 1.6s step-end infinite; }
+  .cover:hover img{ filter:saturate(1.18) contrast(1.07); }
 
-    .boot-cursor {
-      display: inline-block;
-      width: 7px;
-      height: 12px;
-      background: #01B0FF;
-      vertical-align: middle;
-      animation: blink 0.8s step-end infinite;
-    }
+  /* PRIMARY CTA — on-theme, terminal-styled */
+  .cta{ display:flex; align-items:center; justify-content:center; gap:10px;
+    background:var(--pink); color:var(--bg); border:1px solid var(--pink);
+    padding:18px 16px; font-family:var(--mono); font-size:16px; font-weight:700; letter-spacing:0.04em;
+    box-shadow:0 0 0 1px var(--bg), 0 0 18px rgba(0,175,254,0.45);
+    transition:transform .08s, box-shadow .2s, background .12s;
+    animation:ctaPulse 2.4s ease-in-out infinite; }
+  .cta .blk{ display:inline-block; width:0.55em; height:1em; background:var(--bg);
+    vertical-align:-1px; animation:blink .8s step-end infinite; }
+  .cta:hover{ box-shadow:0 0 0 1px var(--bg), 0 0 26px rgba(0,175,254,0.7); }
+  .cta:active{ transform:translateY(2px); }
+  @keyframes ctaPulse{ 0%,100%{ box-shadow:0 0 0 1px var(--bg), 0 0 14px rgba(0,175,254,0.35); }
+    50%{ box-shadow:0 0 0 1px var(--bg), 0 0 24px rgba(0,175,254,0.6); } }
 
-    /* ── MAIN CONTENT ── */
-    .container {
-      width: 100%;
-      max-width: 440px;
-      opacity: 0;
-      transform: translateY(10px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
+  .or{ text-align:center; font-size:9px; letter-spacing:0.18em; text-transform:uppercase;
+    opacity:0.4; margin:16px 0 10px; }
 
-    .container.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  /* SECONDARY links — quieter */
+  .links{ display:flex; flex-direction:column; gap:9px; }
+  .btn{ display:flex; align-items:center; justify-content:space-between; gap:10px;
+    border:1px solid var(--pink-faint); padding:13px 15px; font-size:13px; font-weight:500;
+    letter-spacing:0.03em; opacity:0.92; transition:background .12s,color .12s,transform .08s,border-color .12s; }
+  .btn .ar{ opacity:0.5; }
+  .btn:hover,.btn:focus-visible{ background:var(--pink); color:var(--bg); border-color:var(--pink); outline:none; opacity:1; }
+  .btn:hover .ar{ opacity:1; }
+  .btn:active{ transform:translateY(1px); }
 
-    /* ── ART ── */
-    .art-outer {
-      position: relative;
-      margin-bottom: 1.5rem;
-    }
+  /* OPTIONAL preview embed — quiet, at the very bottom */
+  .preview{ margin-top:30px; border-top:1px dashed var(--pink-faint); padding-top:18px; }
+  .preview-lab{ text-align:center; font-size:9px; letter-spacing:0.16em; text-transform:uppercase;
+    opacity:0.45; margin-bottom:10px; }
+  .player{ border:1px solid var(--pink-faint); padding:5px; line-height:0; background:rgba(0,175,254,0.03); }
+  .player iframe{ display:block; border-radius:10px; width:100%; }
 
-    .art-wrap {
-      width: 100%;
-      aspect-ratio: 1;
-      overflow: hidden;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      position: relative;
-    }
+  footer{ margin-top:24px; text-align:center; font-size:10px; opacity:0.5; line-height:1.9; }
 
-    .art-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transform: scale(1.04);
-      filter: brightness(0.3);
-      transition: transform 1.1s cubic-bezier(0.25,0.46,0.45,0.94),
-                  filter 1.1s ease;
-    }
-
-    .art-wrap img.loaded {
-      transform: scale(1);
-      filter: brightness(1);
-    }
-
-    .art-scan {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to bottom,
-        transparent 0%,
-        rgba(1,176,255,0.18) 50%,
-        transparent 100%
-      );
-      transform: translateY(-100%);
-      transition: none;
-      pointer-events: none;
-      border-radius: 12px;
-    }
-
-    .art-scan.sweep {
-      transition: transform 0.9s ease-in-out;
-      transform: translateY(100%);
-    }
-
-    /* ── VINYL STICKER ── */
-    .sticker-wrap {
-      position: absolute;
-      bottom: -28px;
-      right: -16px;
-      width: 110px;
-      height: 110px;
-      z-index: 10;
-      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.22));
-      animation: stickerPop 0.5s cubic-bezier(0.34,1.56,0.64,1) both;
-      animation-delay: 1.8s;
-      opacity: 0;
-    }
-
-    @keyframes stickerPop {
-      from { opacity: 0; transform: scale(0.5) rotate(-15deg); }
-      to   { opacity: 1; transform: scale(1) rotate(-8deg); }
-    }
-
-    .sticker-wrap svg {
-      width: 100%;
-      height: 100%;
-    }
-
-    /* ── META ── */
-    .meta {
-      text-align: center;
-      margin-bottom: 1.75rem;
-      margin-top: 1rem;
-    }
-
-    .meta .release-tag {
-      font-size: 10px;
-      letter-spacing: 0.22em;
-      color: var(--blue);
-      text-transform: uppercase;
-      margin-bottom: 6px;
-    }
-
-    .meta h1 {
-      font-size: 30px;
-      font-weight: 600;
-      color: var(--text);
-      letter-spacing: -0.02em;
-      line-height: 1;
-    }
-
-    .meta .artist {
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 5px;
-      letter-spacing: 0.12em;
-    }
-
-    /* ── PROMPT ── */
-    .prompt-line {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      font-size: 11px;
-      letter-spacing: 0.06em;
-      margin-bottom: 1.25rem;
-      padding: 0.6rem 0.9rem;
-      background: var(--blue-pale);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      color: var(--text2);
-    }
-
-    .prompt-line .caret { color: var(--blue); font-weight: 600; }
-    #typed-text { color: var(--text); }
-
-    .cursor {
-      display: inline-block;
-      width: 7px;
-      height: 13px;
-      background: var(--blue);
-      vertical-align: middle;
-      margin-left: 1px;
-      animation: blink 1.1s step-end infinite;
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50%       { opacity: 0; }
-    }
-
-    /* ── LINKS ── */
-    .links-label {
-      font-size: 10px;
-      letter-spacing: 0.18em;
-      color: var(--muted);
-      text-transform: uppercase;
-      margin-bottom: 0.6rem;
-    }
-
-    .link-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      width: 100%;
-      text-decoration: none;
-      border: 1px solid var(--border);
-      border-radius: 7px;
-      padding: 0.75rem 1rem;
-      margin-bottom: 0.45rem;
-      background: var(--surface);
-      color: var(--text);
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 13px;
-      transition: border-color 0.15s, background 0.15s;
-      cursor: pointer;
-      animation: fadeUp 0.4s ease both;
-    }
-
-    .link-item:hover { border-color: var(--blue2); background: var(--blue-pale); }
-    .link-item:active { transform: translateY(1px); }
-
-    .link-icon { flex-shrink: 0; color: var(--blue); }
-    .link-svc {
-      font-size: 10px;
-      letter-spacing: 0.12em;
-      color: var(--muted);
-      text-transform: uppercase;
-      flex: 1;
-    }
-    .link-name { font-size: 13px; font-weight: 500; color: var(--text); }
-    .link-arrow {
-      font-size: 12px;
-      color: var(--border2);
-      transition: transform 0.15s, color 0.15s;
-    }
-    .link-item:hover .link-arrow { transform: translateX(3px); color: var(--blue); }
-
-    .divider { border: none; border-top: 1px solid var(--border); margin: 0.75rem 0; }
-
-    .footer {
-      text-align: center;
-      font-size: 10px;
-      color: var(--muted);
-      letter-spacing: 0.1em;
-      margin-top: 2rem;
-      line-height: 1.9;
-    }
-    .footer span { color: var(--blue); }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(10px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .link-item:nth-child(1) { animation-delay: 0.1s; }
-    .link-item:nth-child(2) { animation-delay: 0.22s; }
-    .link-item:nth-child(3) { animation-delay: 0.34s; }
-    .link-item:nth-child(4) { animation-delay: 0.5s; }
-
-    @media (max-width: 500px) {
-      body { padding: 1.5rem 0.75rem 4rem; }
-      .meta h1 { font-size: 24px; }
-      .sticker-wrap { width: 90px; height: 90px; bottom: -22px; right: -10px; }
-    }
-  </style>
+  /* STICKY Spotify CTA — always one tap away */
+  .sticky{ position:fixed; left:0; right:0; bottom:0; z-index:9100;
+    display:flex; justify-content:center; padding:12px 14px calc(12px + env(safe-area-inset-bottom));
+    background:linear-gradient(180deg, rgba(223,243,255,0) 0%, #dff3ff 42%);
+    transform:translateY(120%); transition:transform .25s ease; pointer-events:none; }
+  .sticky.show{ transform:translateY(0); pointer-events:auto; }
+  .sticky a{ width:100%; max-width:412px; animation:none; }
+  @media (prefers-reduced-motion:reduce){ .sticky{ transition:none; } .cta{ animation:none; } }
+</style>
 </head>
 <body>
+<canvas id="sky" aria-hidden="true"></canvas>
+<div class="scanlines"></div>
+<div class="vignette"></div>
 
-<!-- BOOT OVERLAY -->
-<div id="boot">
-  <div class="boot-inner" id="boot-lines"></div>
+<div class="term">
+
+  <div class="titlebar">
+    <span class="tb-dots"><i></i><i></i><i></i></span>
+    <span class="tb-name">millo.sys — ttyS0</span>
+    <span class="tb-stat"><span class="on">●</span> ONLINE</span>
+  </div>
+
+  <header>
+    <div class="logo">MILLO</div>
+    <div class="title">SUMMER</div>
+    <div class="sub"><span class="live">●</span> new single · out now</div>
+  </header>
+
+  <!-- cover art — the hook -->
+  <a class="cover" href="https://open.spotify.com/track/2XWSDi1w7lQaEZawG4TVDM?si=4799054e2b4f43ff" target="_blank" rel="noopener" data-track="Cover art">
+    <img src="https://pub-b7ecc820d796436483e1c00669eb3c16.r2.dev/Screenshot%202026-06-22%20at%2010.19.10%E2%80%AFAM.png" alt="millo — Summer (single cover)" loading="eager" />
+    <span class="tag">OUT NOW</span>
+  </a>
+
+  <!-- PRIMARY: open in Spotify -->
+  <a class="cta" id="primary" href="https://open.spotify.com/track/2XWSDi1w7lQaEZawG4TVDM?si=4799054e2b4f43ff" target="_blank" rel="noopener" data-track="Spotify (primary)">
+    <span>▸ Play on Spotify</span><span class="blk"></span>
+  </a>
+
+  <div class="or">or stream elsewhere</div>
+
+  <div class="links">
+    <a class="btn" href="https://music.apple.com/us/album/summer-single/6780217036?uo=4&app=music&at=1001lry3&ct=dashboard" target="_blank" rel="noopener" data-track="Apple Music">
+      <span>▸ Apple Music</span><span class="ar">↗</span>
+    </a>
+    <a class="btn" href="https://youtu.be/BfJhYtu4J_0?si=Ty75zsWbjAKwVJP2" target="_blank" rel="noopener" data-track="YouTube">
+      <span>▸ YouTube</span><span class="ar">↗</span>
+    </a>
+    <a class="btn" href="https://www.instagram.com/millo.band/" target="_blank" rel="noopener" data-track="Instagram">
+      <span>▸ Instagram</span><span class="ar">↗</span>
+    </a>
+  </div>
+
+  <!-- OPTIONAL preview — quiet, at the very bottom -->
+  <div class="preview">
+    <div class="preview-lab">▸ preview in browser</div>
+    <div class="player">
+      <iframe title="Preview 'Summer' on Spotify"
+        src="https://open.spotify.com/embed/track/2XWSDi1w7lQaEZawG4TVDM?utm_source=generator"
+        height="152" frameborder="0" allowfullscreen
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy"></iframe>
+    </div>
+  </div>
+
+  <footer>
+    © 2026 millo &nbsp;//&nbsp; best viewed loud
+  </footer>
+
 </div>
 
-<div class="container" id="main">
-
-  <div class="art-outer">
-    <div class="art-wrap">
-      <img id="art-img"
-        src="https://pub-b7ecc820d796436483e1c00669eb3c16.r2.dev/Screenshot%202026-06-22%20at%2010.19.10%E2%80%AFAM.png"
-        alt="Summer — millo"
-      />
-      <div class="art-scan" id="art-scan"></div>
-    </div>
-
-    <!-- STICKER -->
-    <div class="sticker-wrap">
-      <svg viewBox="0 0 110 110" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <path id="arc" d="M55,55 m-42,0 a42,42 0 1,1 84,0 a42,42 0 1,1 -84,0"/>
-        </defs>
-        <circle cx="55" cy="55" r="52" fill="#01B0FF"/>
-        <circle cx="55" cy="55" r="42" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="0.75"/>
-        <circle cx="55" cy="55" r="34" fill="rgba(255,255,255,0.12)"/>
-
-        <text font-family="'IBM Plex Mono', monospace" font-size="8" font-weight="600" fill="white" letter-spacing="3.5">
-          <textPath href="#arc" startOffset="8%">MILLO · SUMMER · 2026 ·</textPath>
-        </text>
-        <text x="55" y="51" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9" font-weight="600" fill="white" letter-spacing="1">SUMMER</text>
-        <text x="55" y="63" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="7" fill="rgba(255,255,255,0.75)" letter-spacing="2">OUT NOW</text>
-      </svg>
-    </div>
-  </div>
-
-  <div class="meta">
-    <div class="release-tag">&#9656; out now &nbsp;·&nbsp; june 22, 2026</div>
-    <h1>Summer</h1>
-    <div class="artist">millo</div>
-  </div>
-
-  <div class="prompt-line">
-    <span class="caret">$</span>
-    <span id="typed-text"></span><span class="cursor"></span>
-  </div>
-
-  <div class="links-label">// stream &amp; follow</div>
-
-  <a class="link-item" href="https://open.spotify.com/track/2XWSDi1w7lQaEZawG4TVDM?si=4799054e2b4f43ff" target="_blank" rel="noopener" onclick="track('Spotify')">
-    <svg class="link-icon" viewBox="0 0 24 24" fill="none" width="18" height="18">
-      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
-      <path d="M7.5 14.5c2.5-1 5-1 7.5 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-      <path d="M7 11.5c3-1.2 5.5-1 8.5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-      <path d="M6.5 8.5c3.5-1.5 7-1 10 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-    </svg>
-    <span class="link-svc">Spotify</span>
-    <span class="link-name">Listen on Spotify</span>
-    <span class="link-arrow">→</span>
+<!-- Sticky Spotify CTA (shows on scroll) -->
+<div class="sticky" id="sticky" aria-hidden="true">
+  <a class="cta" href="https://open.spotify.com/track/2XWSDi1w7lQaEZawG4TVDM?si=4799054e2b4f43ff" target="_blank" rel="noopener" data-track="Spotify (sticky)">
+    <span>▸ Play on Spotify</span><span class="blk"></span>
   </a>
-
-  <a class="link-item" href="https://music.apple.com/us/album/summer-single/6780217036?uo=4&app=music&at=1001lry3&ct=dashboard" target="_blank" rel="noopener" onclick="track('Apple Music')">
-    <svg class="link-icon" viewBox="0 0 24 24" fill="none" width="18" height="18">
-      <path d="M12 3c4.97 0 9 4.03 9 9s-4.03 9-9 9-9-4.03-9-9 4.03-9 9-9z" stroke="currentColor" stroke-width="1.5"/>
-      <path d="M9.5 16V9l7-1.5V15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      <circle cx="9.5" cy="16" r="1.25" fill="currentColor"/>
-      <circle cx="16.5" cy="15" r="1.25" fill="currentColor"/>
-    </svg>
-    <span class="link-svc">Apple Music</span>
-    <span class="link-name">Listen on Apple Music</span>
-    <span class="link-arrow">→</span>
-  </a>
-
-  <a class="link-item" href="https://youtu.be/BfJhYtu4J_0?si=Ty75zsWbjAKwVJP2" target="_blank" rel="noopener" onclick="track('YouTube')">
-    <svg class="link-icon" viewBox="0 0 24 24" fill="none" width="18" height="18">
-      <rect x="2" y="5" width="20" height="14" rx="4" stroke="currentColor" stroke-width="1.5"/>
-      <path d="M10 9.5l5 2.5-5 2.5V9.5z" fill="currentColor"/>
-    </svg>
-    <span class="link-svc">YouTube</span>
-    <span class="link-name">Watch on YouTube</span>
-    <span class="link-arrow">→</span>
-  </a>
-
-  <hr class="divider" />
-
-  <a class="link-item" href="https://www.instagram.com/millo.band/" target="_blank" rel="noopener" onclick="track('Instagram')">
-    <svg class="link-icon" viewBox="0 0 24 24" fill="none" width="18" height="18">
-      <rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke="currentColor" stroke-width="1.5"/>
-      <circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.5"/>
-      <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
-    </svg>
-    <span class="link-svc">Instagram</span>
-    <span class="link-name">Follow @millo.band</span>
-    <span class="link-arrow">→</span>
-  </a>
-
-  <div class="footer">
-    <span>millo</span> &nbsp;·&nbsp; Summer &nbsp;·&nbsp; 2026<br/>
-    all rights reserved<br/>
-    <a href="https://milloband.com/" target="_blank" rel="noopener" style="color:var(--muted);text-decoration:none;letter-spacing:0.1em;font-size:10px;border-bottom:1px solid var(--border);padding-bottom:1px;transition:color 0.15s,border-color 0.15s;" onmouseover="this.style.color='var(--blue)';this.style.borderColor='var(--blue)'" onmouseout="this.style.color='var(--muted)';this.style.borderColor='var(--border)'">milloband.com</a>
-  </div>
-
 </div>
 
 <script>
-  /* ── BOOT SEQUENCE ── */
-  const bootLines = [
-    { text: 'millo-os v2.6.22 booting...', cls: 'dim', delay: 0 },
-    { text: 'loading audio engine......... [OK]', cls: 'ok', delay: 220 },
-    { text: 'mounting /releases/summer', cls: '', delay: 420 },
-    { text: 'checking streaming nodes.... [OK]', cls: 'ok', delay: 620 },
-    { text: 'unpacking Summer.flac', cls: 'white', delay: 820 },
-    { text: '> release date: june 22 2026', cls: '', delay: 1020 },
-    { text: '> artist: millo', cls: '', delay: 1160 },
-    { text: '', cls: '', delay: 1300 },
-    { text: 'initializing player ▋', cls: 'white', delay: 1420 },
-  ];
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const bootEl = document.getElementById('boot-lines');
-  bootLines.forEach(({ text, cls, delay }) => {
-    setTimeout(() => {
-      const line = document.createElement('div');
-      line.className = 'boot-line' + (cls ? ' ' + cls : '');
-      line.textContent = text;
-      bootEl.appendChild(line);
-      requestAnimationFrame(() => line.classList.add('show'));
-    }, delay);
-  });
-
-  setTimeout(() => {
-    const boot = document.getElementById('boot');
-    boot.classList.add('fade-out');
-    setTimeout(() => boot.remove(), 650);
-
-    const main = document.getElementById('main');
-    main.classList.add('visible');
-
-    const img = document.getElementById('art-img');
-    const scan = document.getElementById('art-scan');
-
-    if (img.complete) {
-      revealArt();
-    } else {
-      img.addEventListener('load', revealArt);
+  // ── PIXELATED DRIFTING CLOUDS ──
+  (function sky(){
+    var cv = document.getElementById('sky'); if(!cv) return;
+    var ctx = cv.getContext('2d');
+    var PX = 7;                          // size of each "pixel" block
+    var buf = document.createElement('canvas'), bctx = buf.getContext('2d');
+    var bw, bh, clouds = [];
+    function rand(a,b){ return a + Math.random()*(b-a); }
+    function makeCloud(){
+      var n = Math.floor(rand(4,7)), base = rand(7,14), puffs = [];
+      for(var i=0;i<n;i++){
+        puffs.push({ dx:rand(-base*1.5, base*1.5), dy:rand(-base*0.4, base*0.45), r:rand(base*0.6, base) });
+      }
+      return { x:0, y:rand(2, bh*0.78), speed:rand(3,9), alpha:rand(0.4,0.85), puffs:puffs };
     }
-
-    function revealArt() {
-      setTimeout(() => {
-        img.classList.add('loaded');
-        scan.classList.add('sweep');
-      }, 100);
+    function resize(){
+      cv.width = window.innerWidth; cv.height = window.innerHeight;
+      bw = Math.ceil(cv.width/PX); bh = Math.ceil(cv.height/PX);
+      buf.width = bw; buf.height = bh;
+      if(!clouds.length){
+        var count = Math.max(4, Math.round(cv.width/200));
+        for(var i=0;i<count;i++){ var c = makeCloud(); c.x = rand(0, bw); clouds.push(c); }
+      }
     }
-
-    setTimeout(() => {
-      let pi = 0, ci = 0, deleting = false;
-      const phrases = ['play summer --now', 'stream summer.mp3', 'follow --all-platforms'];
-      const el = document.getElementById('typed-text');
-
-      function type() {
-        const phrase = phrases[pi];
-        if (!deleting) {
-          el.textContent = phrase.slice(0, ++ci);
-          if (ci === phrase.length) { deleting = true; setTimeout(type, 2200); return; }
-          setTimeout(type, 65);
-        } else {
-          el.textContent = phrase.slice(0, --ci);
-          if (ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; setTimeout(type, 400); return; }
-          setTimeout(type, 35);
+    function draw(dt){
+      bctx.clearRect(0,0,bw,bh);
+      bctx.fillStyle = '#ffffff';
+      for(var i=0;i<clouds.length;i++){
+        var c = clouds[i];
+        c.x -= c.speed*dt;
+        if(c.x < -30){ c.x = bw + rand(8,50); c.y = rand(2, bh*0.78); c.speed = rand(3,9); }
+        bctx.globalAlpha = c.alpha;
+        for(var j=0;j<c.puffs.length;j++){
+          var p = c.puffs[j];
+          bctx.beginPath(); bctx.arc(c.x+p.dx, c.y+p.dy, p.r, 0, Math.PI*2); bctx.fill();
         }
       }
-      type();
-    }, 300);
+      bctx.globalAlpha = 1;
+      ctx.clearRect(0,0,cv.width,cv.height);
+      ctx.imageSmoothingEnabled = false;
+      ctx.drawImage(buf, 0,0,bw,bh, 0,0,cv.width,cv.height);
+    }
+    resize();
+    window.addEventListener('resize', resize);
+    if(reduce){ draw(0); return; }
+    var last = performance.now();
+    (function loop(t){ var dt = Math.min(0.05, (t-last)/1000) || 0; last = t; draw(dt); requestAnimationFrame(loop); })(last);
+  })();
 
-  }, 2100);
+  // ── OUTBOUND CLICK TRACKING (GA4 + Meta Pixel) ──
+  document.querySelectorAll('a[data-track]').forEach(function(a){
+    a.addEventListener('click', function(){
+      var label = a.getAttribute('data-track'), dest = a.href;
+      if(typeof gtag === 'function'){
+        gtag('event', 'outbound_click', { link_label: label, link_url: dest, transport_type: 'beacon' });
+      }
+      if(typeof fbq === 'function'){
+        if(/Spotify|Apple Music|YouTube/i.test(label)){ fbq('track', 'Lead', { content_name: label }); }
+        else { fbq('trackCustom', 'LinkClick', { link_label: label, link_url: dest }); }
+      }
+    });
+  });
 
-  function track(service) {
-    if (typeof gtag !== 'undefined') gtag('event', 'link_click', { service, song: 'Summer' });
-    if (typeof fbq !== 'undefined') fbq('track', 'ViewContent', { content_name: 'Summer', content_type: service });
+  // ── STICKY Spotify CTA: reveal once the primary button scrolls out of view ──
+  var primary = document.getElementById('primary'), sticky = document.getElementById('sticky');
+  if(primary && sticky && 'IntersectionObserver' in window){
+    new IntersectionObserver(function(entries){
+      sticky.classList.toggle('show', !entries[0].isIntersecting);
+      sticky.setAttribute('aria-hidden', String(entries[0].isIntersecting));
+    }, { threshold: 0 }).observe(primary);
   }
+})();
 </script>
-
 </body>
 </html>
