@@ -17,20 +17,23 @@
 <meta name="twitter:image" content="https://pub-b7ecc820d796436483e1c00669eb3c16.r2.dev/summer%28compressed%29.jpg" />
 
 <link rel="preconnect" href="https://open.spotify.com" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" />
 
 <!-- ════════════════════════════════════════════════════════════
      ANALYTICS — replace the two placeholder IDs below:
-       • G-F4TJCEFXBY     → your GA4 Measurement ID
+       • G-K097SZHXHD     → your GA4 Measurement ID
        • 3654528478159998 → your Meta (Facebook) Pixel ID
      ════════════════════════════════════════════════════════════ -->
 
 <!-- Google Analytics 4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-F4TJCEFXBY"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K097SZHXHD"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-F4TJCEFXBY');
+  gtag('config', 'G-K097SZHXHD');
 </script>
 
 <!-- Meta Pixel -->
@@ -98,14 +101,33 @@
   .tb-stat .on{ color:var(--pink-hi); animation:blink 1.4s step-end infinite; }
   @keyframes blink{ 0%,100%{opacity:1} 50%{opacity:0} }
 
-  header{ padding:20px 0 4px; text-align:center; }
+  header{ padding:20px 0 2px; }
   .logo{ font-family:var(--pixel); font-size:30px; line-height:1; letter-spacing:0.18em;
     text-transform:uppercase; color:var(--pink-hi); text-shadow:0 0 10px rgba(0,175,254,0.45); }
-  .title{ font-family:var(--pixel); font-size:60px; font-style:italic; font-weight:700; line-height:0.95;
-    text-align:center; color:var(--pink-hi); margin:12px 0 6px; text-shadow:0 0 16px rgba(0,175,254,0.5); }
-  .sub{ text-align:center; font-size:12px; letter-spacing:0.22em; text-transform:uppercase;
-    opacity:0.65; margin-bottom:18px; }
-  .sub .live{ color:var(--pink); }
+
+  /* eyebrow + glitch SUMMER title (left-aligned) */
+  .eyebrow{ font-size:11px; opacity:0.6; letter-spacing:0.14em; text-transform:uppercase; margin:2px 0 6px; }
+  .title{ font-family:'Press Start 2P',var(--mono); font-size:42px; line-height:1; letter-spacing:0.02em;
+    margin:6px 0 4px; position:relative; display:inline-block; color:var(--pink);
+    text-shadow:0 0 12px rgba(0,175,254,0.5); }
+  @media (max-width:440px){ .title{ font-size:34px; } }
+  @media (max-width:340px){ .title{ font-size:28px; } }
+  .glitch::before,.glitch::after{
+    content:attr(data-text); position:absolute; left:0; top:0; width:100%;
+    overflow:hidden; clip-path:inset(0 0 0 0); }
+  .glitch::before{ color:#7df; transform:translate(-2px,0); animation:gl1 5s steps(2) infinite; opacity:0; }
+  .glitch::after{ color:var(--pink-hi); transform:translate(2px,0); animation:gl2 5s steps(2) infinite; opacity:0; }
+  @keyframes gl1{ 0%,92%,100%{opacity:0;clip-path:inset(0 0 100% 0)} 93%{opacity:.7;clip-path:inset(10% 0 60% 0)} 96%{opacity:.7;clip-path:inset(60% 0 20% 0)} }
+  @keyframes gl2{ 0%,92%,100%{opacity:0;clip-path:inset(0 0 100% 0)} 94%{opacity:.6;clip-path:inset(40% 0 35% 0)} 97%{opacity:.6;clip-path:inset(70% 0 5% 0)} }
+
+  /* equalizer audio animation */
+  .eq{ display:flex; align-items:flex-end; gap:3px; height:24px; margin:14px 0 10px; }
+  .eq i{ width:5px; height:100%; background:var(--pink); display:block; transform-origin:bottom;
+    box-shadow:0 0 6px rgba(0,175,254,0.5); animation:eq 0.9s ease-in-out infinite; }
+  @keyframes eq{ 0%,100%{transform:scaleY(0.18)} 50%{transform:scaleY(1)} }
+
+  .status{ font-size:13px; letter-spacing:0.1em; margin-bottom:16px; color:var(--pink-hi); font-weight:700; }
+  .status .spark{ animation:blink 1.6s step-end infinite; }
 
   /* cover art — the hook */
   .cover{ display:block; position:relative; width:100%; margin:4px 0 18px;
@@ -162,7 +184,8 @@
     transform:translateY(120%); transition:transform .25s ease; pointer-events:none; }
   .sticky.show{ transform:translateY(0); pointer-events:auto; }
   .sticky a{ width:100%; max-width:412px; animation:none; }
-  @media (prefers-reduced-motion:reduce){ .sticky{ transition:none; } .cta{ animation:none; } }
+  @media (prefers-reduced-motion:reduce){ .sticky{ transition:none; } .cta{ animation:none; }
+    .eq i{ animation:none; } .glitch::before,.glitch::after{ animation:none; opacity:0; } }
 </style>
 </head>
 <body>
@@ -180,8 +203,6 @@
 
   <header>
     <div class="logo">MILLO</div>
-    <div class="title">SUMMER</div>
-    <div class="sub"><span class="live">●</span> new single · out now</div>
   </header>
 
   <!-- cover art — the hook -->
@@ -189,6 +210,12 @@
     <img src="https://pub-b7ecc820d796436483e1c00669eb3c16.r2.dev/summer%28compressed%29.jpg" alt="millo — Summer (single cover)" loading="eager" />
     <span class="tag">OUT NOW</span>
   </a>
+
+  <!-- glitch title + audio animation -->
+  <div class="eyebrow">New single · out now · 06.22.2026</div>
+  <div class="title glitch" data-text="SUMMER">SUMMER</div>
+  <div class="eq" aria-hidden="true"></div>
+  <div class="status">STATUS: OUT NOW <span class="spark">✦</span></div>
 
   <!-- PRIMARY: open in Spotify -->
   <a class="cta" id="primary" href="https://open.spotify.com/track/2XWSDi1w7lQaEZawG4TVDM?si=4799054e2b4f43ff" target="_blank" rel="noopener" data-track="Spotify (primary)">
@@ -285,6 +312,19 @@
     if(reduce){ draw(0); return; }
     var last = performance.now();
     (function loop(t){ var dt = Math.min(0.05, (t-last)/1000) || 0; last = t; draw(dt); requestAnimationFrame(loop); })(last);
+  })();
+
+  // ── EQUALIZER BARS (borrowed from milloband.com) ──
+  (function eq(){
+    var wrap = document.querySelector('.eq'); if(!wrap) return;
+    var N = 24;
+    for(var i=0;i<N;i++){
+      var b = document.createElement('i');
+      b.style.animationDuration = (0.6 + Math.random()*0.8).toFixed(2) + 's';
+      b.style.animationDelay = (Math.random()*-1.2).toFixed(2) + 's';
+      if(reduce) b.style.transform = 'scaleY(' + (0.3 + Math.random()*0.7).toFixed(2) + ')';
+      wrap.appendChild(b);
+    }
   })();
 
   // ── OUTBOUND CLICK TRACKING (GA4 + Meta Pixel) ──
