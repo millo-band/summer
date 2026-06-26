@@ -80,11 +80,6 @@
   #sky{ position:fixed; inset:0; z-index:0; pointer-events:none;
     image-rendering:pixelated; image-rendering:crisp-edges; opacity:0.3; }
 
-  /* CRT overlays */
-  .scanlines{ position:fixed; inset:0; z-index:9000; pointer-events:none;
-    background:repeating-linear-gradient(0deg, transparent 0 2px, var(--scan) 2px 3px); }
-  .vignette{ position:fixed; inset:0; z-index:9001; pointer-events:none;
-    background:radial-gradient(ellipse 95% 85% at 50% 40%, transparent 60%, var(--vig) 100%); }
 
   .term{ position:relative; z-index:1; width:100%; max-width:440px; margin:0 auto; min-height:100vh;
     border-left:1px solid var(--pink-faint); border-right:1px solid var(--pink-faint);
@@ -112,19 +107,7 @@
     text-shadow:0 0 12px rgba(0,175,254,0.5); }
   @media (max-width:440px){ .title{ font-size:34px; } }
   @media (max-width:340px){ .title{ font-size:28px; } }
-  .glitch::before,.glitch::after{
-    content:attr(data-text); position:absolute; left:0; top:0; width:100%;
-    overflow:hidden; clip-path:inset(0 0 0 0); }
-  .glitch::before{ color:#7df; transform:translate(-2px,0); animation:gl1 5s steps(2) infinite; opacity:0; }
-  .glitch::after{ color:var(--pink-hi); transform:translate(2px,0); animation:gl2 5s steps(2) infinite; opacity:0; }
-  @keyframes gl1{ 0%,92%,100%{opacity:0;clip-path:inset(0 0 100% 0)} 93%{opacity:.7;clip-path:inset(10% 0 60% 0)} 96%{opacity:.7;clip-path:inset(60% 0 20% 0)} }
-  @keyframes gl2{ 0%,92%,100%{opacity:0;clip-path:inset(0 0 100% 0)} 94%{opacity:.6;clip-path:inset(40% 0 35% 0)} 97%{opacity:.6;clip-path:inset(70% 0 5% 0)} }
 
-  /* equalizer audio animation */
-  .eq{ display:flex; align-items:flex-end; gap:3px; height:24px; margin:14px 0 10px; }
-  .eq i{ width:5px; height:100%; background:var(--pink); display:block; transform-origin:bottom;
-    box-shadow:0 0 6px rgba(0,175,254,0.5); animation:eq 0.9s ease-in-out infinite; }
-  @keyframes eq{ 0%,100%{transform:scaleY(0.18)} 50%{transform:scaleY(1)} }
 
   .status{ font-size:13px; letter-spacing:0.1em; margin-bottom:16px; color:var(--pink-hi); font-weight:700; }
   .status .spark{ animation:blink 1.6s step-end infinite; }
@@ -155,27 +138,22 @@
   @keyframes ctaPulse{ 0%,100%{ box-shadow:0 0 0 1px var(--bg), 0 0 14px rgba(0,175,254,0.35); }
     50%{ box-shadow:0 0 0 1px var(--bg), 0 0 24px rgba(0,175,254,0.6); } }
 
-  .or{ text-align:center; font-size:9px; letter-spacing:0.18em; text-transform:uppercase;
-    opacity:0.4; margin:16px 0 10px; }
+  /* in-app browser escape banner */
+  .iab-banner{ position:sticky; top:0; z-index:9200; text-align:center;
+    background:var(--pink); color:var(--bg); font-family:var(--mono); font-weight:700;
+    font-size:12px; line-height:1.4; letter-spacing:0.02em; padding:10px 14px;
+    box-shadow:0 0 18px rgba(0,175,254,0.5); text-shadow:none; }
+  .iab-banner b{ font-weight:800; }
 
-  /* SECONDARY links — quieter */
-  .links{ display:flex; flex-direction:column; gap:9px; }
-  .btn{ display:flex; align-items:center; justify-content:space-between; gap:10px;
-    border:1px solid var(--pink-faint); padding:13px 15px; font-size:13px; font-weight:500;
-    letter-spacing:0.03em; opacity:0.92; transition:background .12s,color .12s,transform .08s,border-color .12s; }
-  .btn .ar{ opacity:0.5; }
-  .btn:hover,.btn:focus-visible{ background:var(--pink); color:var(--bg); border-color:var(--pink); outline:none; opacity:1; }
-  .btn:hover .ar{ opacity:1; }
-  .btn:active{ transform:translateY(1px); }
+  /* quiet secondary link — signals choice / legitimacy */
+  .alt-link{ display:block; text-align:center; margin:14px 0 2px; font-size:11px;
+    letter-spacing:0.06em; opacity:0.5; transition:opacity .15s; }
+  .alt-link:hover,.alt-link:focus-visible{ opacity:0.85; outline:none; }
 
-  /* OPTIONAL preview embed — quiet, at the very bottom */
-  .preview{ margin-top:30px; border-top:1px dashed var(--pink-faint); padding-top:18px; }
-  .preview-lab{ text-align:center; font-size:9px; letter-spacing:0.16em; text-transform:uppercase;
-    opacity:0.45; margin-bottom:10px; }
-  .player{ border:1px solid var(--pink-faint); padding:5px; line-height:0; background:rgba(0,175,254,0.03); }
-  .player iframe{ display:block; border-radius:10px; width:100%; }
-
-  footer{ margin-top:24px; text-align:center; font-size:10px; opacity:0.5; line-height:1.9; }
+  footer{ margin-top:24px; text-align:center; font-size:10px; line-height:2;
+    letter-spacing:0.22em; text-transform:uppercase; opacity:0.55; }
+  footer .stars{ display:block; font-size:12px; letter-spacing:0.4em; color:var(--pink-hi);
+    text-shadow:0 0 8px rgba(0,175,254,0.55); }
 
   /* STICKY Spotify CTA — always one tap away */
   .sticky{ position:fixed; left:0; right:0; bottom:0; z-index:9100;
@@ -189,9 +167,11 @@
 </style>
 </head>
 <body>
-<canvas id="sky" aria-hidden="true"></canvas>
-<div class="scanlines"></div>
-<div class="vignette"></div>
+
+<!-- in-app browser escape banner (shown via JS only inside IG/FB/etc webviews) -->
+<div class="iab-banner" id="iabBanner" hidden>
+  ⚠ Tap <b>⋯</b> top-right → <b>Open in browser</b> so Spotify opens in the app.
+</div>
 
 <div class="term">
 
@@ -213,8 +193,7 @@
 
   <!-- glitch title + audio animation -->
   <div class="eyebrow">New single · out now · 06.22.2026</div>
-  <div class="title glitch" data-text="SUMMER">SUMMER</div>
-  <div class="eq" aria-hidden="true"></div>
+  <div class="title">SUMMER</div>
   <div class="status">STATUS: OUT NOW <span class="spark">✦</span></div>
 
   <!-- PRIMARY: open in Spotify -->
@@ -222,34 +201,13 @@
     <span>▸ Play on Spotify</span><span class="blk"></span>
   </a>
 
-  <div class="or">or stream elsewhere</div>
-
-  <div class="links">
-    <a class="btn" href="https://music.apple.com/us/album/summer-single/6780217036?uo=4&app=music&at=1001lry3&ct=dashboard" target="_blank" rel="noopener" data-track="Apple Music">
-      <span>▸ Apple Music</span><span class="ar">↗</span>
-    </a>
-    <a class="btn" href="https://youtu.be/BfJhYtu4J_0?si=Ty75zsWbjAKwVJP2" target="_blank" rel="noopener" data-track="YouTube">
-      <span>▸ YouTube</span><span class="ar">↗</span>
-    </a>
-    <a class="btn" href="https://www.instagram.com/millo.band/" target="_blank" rel="noopener" data-track="Instagram">
-      <span>▸ Instagram</span><span class="ar">↗</span>
-    </a>
-  </div>
-
-  <!-- OPTIONAL preview — quiet, at the very bottom -->
-  <div class="preview">
-    <div class="preview-lab">▸ preview in browser</div>
-    <div class="player">
-      <iframe title="Preview 'Summer' on Spotify"
-        src="https://open.spotify.com/embed/track/2XWSDi1w7lQaEZawG4TVDM?utm_source=generator"
-        height="152" frameborder="0" allowfullscreen
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-        loading="lazy"></iframe>
-    </div>
-  </div>
+  <a class="alt-link" href="https://milloband.com" target="_blank" rel="noopener" data-track="milloband.com">
+    or visit milloband.com ↗
+  </a>
 
   <footer>
-    © 2026 millo &nbsp;//&nbsp; best viewed loud
+    backrooms synthgaze<br>
+    <span class="stars">✰ ✰ ✰ ✰ ✰</span>
   </footer>
 
 </div>
@@ -265,77 +223,59 @@
 (function(){
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // ── PIXELATED DRIFTING CLOUDS ──
-  (function sky(){
-    var cv = document.getElementById('sky'); if(!cv) return;
-    var ctx = cv.getContext('2d');
-    var PX = 7;                          // size of each "pixel" block
-    var buf = document.createElement('canvas'), bctx = buf.getContext('2d');
-    var bw, bh, clouds = [];
-    function rand(a,b){ return a + Math.random()*(b-a); }
-    function makeCloud(){
-      var n = Math.floor(rand(4,7)), base = rand(7,14), puffs = [];
-      for(var i=0;i<n;i++){
-        puffs.push({ dx:rand(-base*1.5, base*1.5), dy:rand(-base*0.4, base*0.45), r:rand(base*0.6, base) });
-      }
-      return { x:0, y:rand(2, bh*0.78), speed:rand(3,9), alpha:rand(0.4,0.85), puffs:puffs };
-    }
-    function resize(){
-      cv.width = window.innerWidth; cv.height = window.innerHeight;
-      bw = Math.ceil(cv.width/PX); bh = Math.ceil(cv.height/PX);
-      buf.width = bw; buf.height = bh;
-      if(!clouds.length){
-        var count = Math.max(4, Math.round(cv.width/200));
-        for(var i=0;i<count;i++){ var c = makeCloud(); c.x = rand(0, bw); clouds.push(c); }
-      }
-    }
-    function draw(dt){
-      bctx.clearRect(0,0,bw,bh);
-      bctx.fillStyle = '#9fd4ff';
-      for(var i=0;i<clouds.length;i++){
-        var c = clouds[i];
-        c.x -= c.speed*dt;
-        if(c.x < -30){ c.x = bw + rand(8,50); c.y = rand(2, bh*0.78); c.speed = rand(3,9); }
-        bctx.globalAlpha = c.alpha;
-        for(var j=0;j<c.puffs.length;j++){
-          var p = c.puffs[j];
-          bctx.beginPath(); bctx.arc(c.x+p.dx, c.y+p.dy, p.r, 0, Math.PI*2); bctx.fill();
-        }
-      }
-      bctx.globalAlpha = 1;
-      ctx.clearRect(0,0,cv.width,cv.height);
-      ctx.imageSmoothingEnabled = false;
-      ctx.drawImage(buf, 0,0,bw,bh, 0,0,cv.width,cv.height);
-    }
-    resize();
-    window.addEventListener('resize', resize);
-    if(reduce){ draw(0); return; }
-    var last = performance.now();
-    (function loop(t){ var dt = Math.min(0.05, (t-last)/1000) || 0; last = t; draw(dt); requestAnimationFrame(loop); })(last);
-  })();
+  var TRACK_ID = '2XWSDi1w7lQaEZawG4TVDM';
+  var ua = navigator.userAgent || '';
+  var inApp = /FBAN|FBAV|FB_IAB|Instagram|Messenger|Line\/|Snapchat|Pinterest|TikTok|Twitter/i.test(ua);
 
-  // ── EQUALIZER BARS (borrowed from milloband.com) ──
-  (function eq(){
-    var wrap = document.querySelector('.eq'); if(!wrap) return;
-    var N = 24;
-    for(var i=0;i<N;i++){
-      var b = document.createElement('i');
-      b.style.animationDuration = (0.6 + Math.random()*0.8).toFixed(2) + 's';
-      b.style.animationDelay = (Math.random()*-1.2).toFixed(2) + 's';
-      if(reduce) b.style.transform = 'scaleY(' + (0.3 + Math.random()*0.7).toFixed(2) + ')';
-      wrap.appendChild(b);
+  // ── IN-APP BROWSER ESCAPE BANNER ──
+  // IG/FB/etc webviews trap the user logged-out, so Spotify plays become 30s previews,
+  // not real streams. Nudge them to open in the real browser where the app launches.
+  if(inApp){
+    var banner = document.getElementById('iabBanner');
+    if(banner) banner.hidden = false;
+  }
+
+  // ── SPOTIFY APP DEEP-LINK (attempt native app, fall back to web) ──
+  // Tapping a Spotify link tries the spotify: URI first so the installed app opens
+  // (and the play counts as a real stream), then falls back to the web URL.
+  function openSpotify(e){
+    var webUrl = this.href;
+    e.preventDefault();
+    var start = Date.now();
+    var fell = false;
+    function fallback(){
+      if(fell) return; fell = true;
+      // if the app opened, the tab is hidden / a lot of time passed — don't redirect
+      if(document.hidden || Date.now() - start > 1800) return;
+      window.location.href = webUrl;
     }
-  })();
+    // visibilitychange fires when the app takes over — cancels the fallback
+    document.addEventListener('visibilitychange', function onv(){
+      if(document.hidden){ fell = true; document.removeEventListener('visibilitychange', onv); }
+    });
+    try { window.location.href = 'spotify://track/' + TRACK_ID; } catch(err){}
+    setTimeout(fallback, 1500);
+  }
+  document.querySelectorAll('a[data-track*="Spotify"], a.cover').forEach(function(a){
+    a.addEventListener('click', openSpotify);
+  });
 
   // ── OUTBOUND CLICK TRACKING (GA4 + Meta Pixel) ──
   document.querySelectorAll('a[data-track]').forEach(function(a){
     a.addEventListener('click', function(){
       var label = a.getAttribute('data-track'), dest = a.href;
+      var toSpotify = /spotify\.com/i.test(dest);   // cover art, primary CTA + sticky all point to Spotify
       if(typeof gtag === 'function'){
+        // generic event for every outbound click
         gtag('event', 'outbound_click', { link_label: label, link_url: dest, transport_type: 'beacon' });
+        // dedicated, countable event for "people who reached Spotify"
+        if(toSpotify){
+          gtag('event', 'spotify_click', { link_label: label, link_url: dest, transport_type: 'beacon' });
+        }
       }
       if(typeof fbq === 'function'){
-        if(/Spotify|Apple Music|YouTube/i.test(label)){ fbq('track', 'Lead', { content_name: label }); }
+        if(toSpotify){ fbq('track', 'Lead', { content_name: 'Spotify', source: label }); }
+        else if(/Apple Music|YouTube/i.test(label)){ fbq('track', 'Lead', { content_name: label }); }
         else { fbq('trackCustom', 'LinkClick', { link_label: label, link_url: dest }); }
       }
     });
